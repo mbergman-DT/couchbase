@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: data-couchbase
+    env: dev
+  name: data-couchbase-standalone
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-couchbase
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: data-couchbase
+        env: dev
+    spec:
+      containers:
+      - image: couchbase:community-6.6.0
+        imagePullPolicy: IfNotPresent
+        name: data-couchbase
+
